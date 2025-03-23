@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Only</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="steamImage" src="https://valvearchive.com/archive/Other%20Files/Steam/Images/Valve1.jpg" alt="Steam Start" onclick="handleClick()">
+    
+    <script>
+        const firstImage = "https://valvearchive.com/archive/Other%20Files/Steam/Images/Valve1.jpg";
+        const secondImage = "https://web.archive.org/web/20020403232308im_/http://shacknews.com/extras/e_steam/steam_client.gif";
+        const thirdImage = "https://i.imgur.com/VO6nPkc.png";
+        const fourthImage = "https://web.archive.org/web/20030117003535im_/http://shacknews.com/extras/e_steam/steam_dl.gif";
+        const fifthImage = "https://i.imgur.com/7JJyyDy.png";
+
+        let timeout;
+
+        function handleClick() {
+            const img = document.getElementById('steamImage');
+            if (img.src.includes(firstImage)) {
+                img.src = secondImage;
+            } else if (img.src.includes(secondImage)) {
+                img.src = thirdImage;
+            } else if (img.src.includes(thirdImage)) {
+                img.src = fourthImage;
+                timeout = setTimeout(() => {
+                    img.src = thirdImage;
+                }, 10000); // 10 saniye sonra VO6nPkc.png geri gelecek
+            } else if (img.src.includes(fourthImage)) {
+                img.src = fifthImage;
+            }
+        }
+    </script>
+</body>
+</html>
